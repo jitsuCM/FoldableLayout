@@ -44,8 +44,8 @@ public class FoldableListLayout extends FrameLayout implements GestureDetector.O
     private FoldableItemLayout mFirstLayout, mSecondLayout;
     private FoldShading mFoldShading;
 
-    private SparseArray<FoldableItemLayout> mFoldableItemsMap = new SparseArray<FoldableItemLayout>();
-    private Queue<FoldableItemLayout> mFoldableItemsCache = new LinkedList<FoldableItemLayout>();
+    private final SparseArray<FoldableItemLayout> mFoldableItemsMap = new SparseArray<FoldableItemLayout>();
+    private final Queue<FoldableItemLayout> mFoldableItemsCache = new LinkedList<FoldableItemLayout>();
 
     private boolean mIsGesturesEnabled = true;
     private ObjectAnimator mAnimator;
@@ -374,7 +374,7 @@ public class FoldableListLayout extends FrameLayout implements GestureDetector.O
         return mFlingAnimation.fling(velocity);
     }
 
-    private DataSetObserver mDataObserver = new DataSetObserver() {
+    private final DataSetObserver mDataObserver = new DataSetObserver() {
         @Override
         public void onChanged() {
             super.onChanged();

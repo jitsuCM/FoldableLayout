@@ -1,8 +1,6 @@
 package com.alexvasilkov.foldablelayout.sample.activities;
 
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,9 +38,7 @@ public class UnfoldableDetailsActivity extends BaseActivity {
         mDetailsLayout.setVisibility(View.INVISIBLE);
 
         mUnfoldableView = Views.find(this, R.id.unfoldable_view);
-
-        Bitmap glance = ((BitmapDrawable) getResources().getDrawable(R.drawable.unfold_glance)).getBitmap();
-        mUnfoldableView.setFoldShading(new GlanceFoldShading(this, glance));
+        mUnfoldableView.setFoldShading(new GlanceFoldShading(this, R.drawable.unfold_glance));
 
         mUnfoldableView.setOnFoldingListener(new UnfoldableView.SimpleFoldingListener() {
             @Override
