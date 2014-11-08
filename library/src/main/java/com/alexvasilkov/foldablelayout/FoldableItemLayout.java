@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -371,6 +372,19 @@ public class FoldableItemLayout extends FrameLayout {
                 mShading.onPostDraw(canvas, mBitmapBounds, mLocalFoldRotation, mGravity);
         }
 
+
+        /**
+         * There will be two of PartView's, each of them containing a reference to the bitmap.
+         * Those need to be recycled in a secure manner.
+         */
+        @Override
+        protected void onDetachedFromWindow() {
+
+            if (mBitmap != null && !mBitmap.isRecycled()) {
+                mBitmap.recycle();
+            }
+            mBitmap = null;
+        }
     }
 
 }
